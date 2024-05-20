@@ -1,40 +1,25 @@
 <template>
   <div class="result">
-    <div style="width: 100px; height: 100px; background: #fc0"></div>
+    <div class="result__wrap">
+      <div class="result__layer" :class="`select__face-${getEmojiInfo.faceInfo}`"></div>
+      <div class="result__layer" :class="`select__eyes-${getEmojiInfo.eyesInfo}`"></div>
+      <div class="result__layer" :class="`select__mouth-${getEmojiInfo.mouthInfo}`"></div>
+      <div class="result__layer" :class="`select__acc-${acc}`" v-for="acc in getEmojiInfo.accInfo" :key="acc"></div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'resultBox',
-  data() {
-    return {
-      face: '',
-      eyes: '',
-      nose: '',
-      mouth: '',
-      acc: [],
-    };
-  },
   computed: {
     getEmojiInfo() {
       return {
         faceInfo: this.$store.state.face,
         eyesInfo: this.$store.state.eyes,
-        noseInfo: this.$store.state.nose,
         mouthInfo: this.$store.state.mouth,
         accInfo: this.$store.state.acc,
       };
-    },
-  },
-  watch: {
-    getEmojiInfo(value) {
-      console.log(value);
-      this.face = value.faceInfo
-      this.eyes = value.eyesInfo
-      this.nose = value.noseInfo
-      this.mouth = value.mouthInfo
-      this.acc = value.accInfo
     },
   },
 };
@@ -45,5 +30,19 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.result__wrap {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border: 1px solid #fc0;
+}
+.result__layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
 }
 </style>

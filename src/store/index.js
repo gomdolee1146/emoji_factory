@@ -4,7 +4,6 @@ export default createStore({
   state: {
     face: '',
     eyes: '',
-    nose: '',
     mouth: '',
     acc: [],
   },
@@ -15,9 +14,6 @@ export default createStore({
     },
     saveEyesInfo(state, eyesData) {
       state.eyes = eyesData;
-    },
-    saveNoseInfo(state, noseData) {
-      state.nose = noseData;
     },
     saveMouthInfo(state, mouthData) {
       state.mouth = mouthData;
@@ -32,9 +28,6 @@ export default createStore({
     },
     SAVE_EYES_INFO({ commit }, eyesData) {
       commit('saveEyesInfo', eyesData);
-    },
-    SAVE_NOSE_INFO({ commit }, noseData) {
-      commit('saveNoseInfo', noseData);
     },
     SAVE_MOUTH_INFO({ commit }, mouthData) {
       commit('saveMouthInfo', mouthData);

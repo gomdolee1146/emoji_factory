@@ -32,17 +32,16 @@
 <script>
 import faceSelect from '@/components/select/faceSelect.vue';
 import eyesSelect from '@/components/select/eyesSelect.vue';
-import noseSelect from '@/components/select/noseSelect.vue';
 import mouthSelect from '@/components/select/mouthSelect.vue';
 import accSelect from '@/components/select/accSelect.vue';
 
 export default {
   name: 'selectBox',
-  components: { faceSelect, eyesSelect, noseSelect, mouthSelect, accSelect },
+  components: { faceSelect, eyesSelect, mouthSelect, accSelect },
   data() {
     return {
       selectBtn: 'face',
-      selectTabList: ['face', 'eyes', 'nose', 'mouth', 'acc'],
+      selectTabList: ['face', 'eyes', 'mouth', 'acc'],
     };
   },
   methods() {},
@@ -111,5 +110,10 @@ export default {
 .select__input:checked {
   border: 2px solid #c00;
   box-sizing: content-box;
+}
+.select__label {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 </style>
