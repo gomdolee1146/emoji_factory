@@ -6,6 +6,7 @@ export default createStore({
     eyes: '',
     mouth: '',
     acc: [],
+    bg: '',
   },
   getters: {},
   mutations: {
@@ -21,6 +22,9 @@ export default createStore({
     saveAccInfo(state, accData) {
       state.acc = accData;
     },
+    saveBgInfo(state, bgData) {
+      state.bg = bgData;
+    },
   },
   actions: {
     SAVE_FACE_INFO({ commit }, faceData) {
@@ -34,6 +38,9 @@ export default createStore({
     },
     SAVE_ACC_INFO({ commit }, accData) {
       commit('saveAccInfo', accData);
+    },
+    SAVE_BG_INFO({ commit }, bgData) {
+      commit('saveBgInfo', bgData);
     },
   },
 });

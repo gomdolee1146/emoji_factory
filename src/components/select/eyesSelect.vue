@@ -16,11 +16,13 @@
 </template>
 
 <script>
+import { commonMixin } from '@/mixin/commonMixin';
 export default {
   name: 'eyesSelect',
+  mixins: [commonMixin],
   data() {
     return {
-      eyesLength: 13,
+      eyesLength: null,
       eyesData: '',
     };
   },
@@ -29,6 +31,9 @@ export default {
       const eyesData = this.eyesData;
       await this.$store.dispatch('SAVE_EYES_INFO', eyesData);
     },
+  },
+  mounted() {
+    this.eyesLength = this.getImageLength('eyes');
   },
 };
 </script>

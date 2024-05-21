@@ -34,14 +34,15 @@ import faceSelect from '@/components/select/faceSelect.vue';
 import eyesSelect from '@/components/select/eyesSelect.vue';
 import mouthSelect from '@/components/select/mouthSelect.vue';
 import accSelect from '@/components/select/accSelect.vue';
+import bgSelect from '@/components/select/bgSelect.vue';
 
 export default {
   name: 'selectBox',
-  components: { faceSelect, eyesSelect, mouthSelect, accSelect },
+  components: { faceSelect, eyesSelect, mouthSelect, accSelect, bgSelect },
   data() {
     return {
       selectBtn: 'face',
-      selectTabList: ['face', 'eyes', 'mouth', 'acc'],
+      selectTabList: ['face', 'eyes', 'mouth', 'acc', 'bg'],
     };
   },
   methods() {},
@@ -102,10 +103,11 @@ export default {
 }
 .select__input {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
   width: 100%;
   height: 100%;
+  transform: translate(-50%, -50%);
 }
 .select__input:checked {
   border: 2px solid #c00;
