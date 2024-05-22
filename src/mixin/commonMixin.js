@@ -17,5 +17,19 @@ export const commonMixin = {
       const length = { acc: 9 , eyes: 13, face: 5, mouth: 12 };
       return length[imgType]
     },
+    getRandomNum(max){
+      return Math.floor(Math.random() * (max - 1)) + 1
+    },
+    async getRandomEmoji(){
+      const faceInfo = this.getRandomNum(this.getImageLength('face'))
+      const eyesInfo = this.getRandomNum(this.getImageLength('eyes'))
+      const mouthInfo = this.getRandomNum(this.getImageLength('mouth'))
+      const accInfo = this.getRandomNum(this.getImageLength('acc'))
+
+      await this.$store.dispatch('SAVE_FACE_INFO', faceInfo);
+      await this.$store.dispatch('SAVE_EYES_INFO', eyesInfo);
+      await this.$store.dispatch('SAVE_MOUTH_INFO', mouthInfo);
+      await this.$store.dispatch('SAVE_ACC_INFO', accInfo);
+    }
   },
 };

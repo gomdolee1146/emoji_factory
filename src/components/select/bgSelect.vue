@@ -34,7 +34,7 @@ input[type='color'] {
   background-color: transparent;
 }
 input[type='color']::-webkit-color-swatch {
-  border: none;
+  border: 1px solid #e0e0e0;
   border-radius: 16px;
 }
 </style>
