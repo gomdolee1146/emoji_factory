@@ -31,6 +31,9 @@ export default {
       const mouthData = this.mouthData;
       await this.$store.dispatch('SAVE_MOUTH_INFO', mouthData);
     },
+    async resetMouthData(){
+      await this.$store.dispatch('SAVE_MOUTH_INFO', '');
+    }
   },
   mounted() {
     this.mouthLength = this.getImageLength('mouth');

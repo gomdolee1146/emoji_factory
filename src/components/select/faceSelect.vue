@@ -31,6 +31,9 @@ export default {
       const faceData = this.faceData;
       await this.$store.dispatch('SAVE_FACE_INFO', faceData);
     },
+    async resetFaceData(){
+      await this.$store.dispatch('SAVE_FACE_INFO', '');
+    }
   },
   mounted() {
     this.faceLength = this.getImageLength('face');

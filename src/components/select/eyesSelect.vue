@@ -31,6 +31,9 @@ export default {
       const eyesData = this.eyesData;
       await this.$store.dispatch('SAVE_EYES_INFO', eyesData);
     },
+    async resetEyesData(){
+      await this.$store.dispatch('SAVE_EYES_INFO', '');
+    }
   },
   mounted() {
     this.eyesLength = this.getImageLength('eyes');

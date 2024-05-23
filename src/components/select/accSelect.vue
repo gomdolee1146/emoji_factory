@@ -12,6 +12,9 @@
         <label class="select__label" :class="`select__acc-${acc}`"></label>
       </div>
     </li>
+    <li class="select__lst">
+      <div class="select__box" @click="resetAccData"></div>
+    </li>
   </ul>
 </template>
 
@@ -32,6 +35,9 @@ export default {
       const accData = this.accData;
       await this.$store.dispatch('SAVE_ACC_INFO', accData);
     },
+    async resetAccData(){
+      await this.$store.dispatch('SAVE_ACC_INFO', '');
+    }
   },
   mounted() {
     this.accLength = this.getImageLength('acc');

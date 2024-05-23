@@ -16,16 +16,6 @@
         <component :is="`${selectBtn}Select`"></component>
       </keep-alive>
     </div>
-    <!-- <div class="select__wrap">
-      <ul class="select__list">
-        <li class="select__lst" v-for="(a, idx) in 11" :key="idx">
-          <div class="select__box">
-            <input type="radio" class="select__input" :checked="idx === 0" />
-            <label class="select__label">{{ a }}</label>
-          </div>
-        </li>
-      </ul>
-    </div> -->
   </div>
 </template>
 
@@ -35,14 +25,15 @@ import eyesSelect from '@/components/select/eyesSelect.vue';
 import mouthSelect from '@/components/select/mouthSelect.vue';
 import accSelect from '@/components/select/accSelect.vue';
 import bgSelect from '@/components/select/bgSelect.vue';
+import presetSelect from '@/components/select/presetSelect.vue';
 
 export default {
   name: 'selectBox',
-  components: { faceSelect, eyesSelect, mouthSelect, accSelect, bgSelect },
+  components: { faceSelect, eyesSelect, mouthSelect, accSelect, bgSelect, presetSelect },
   data() {
     return {
       selectBtn: 'face',
-      selectTabList: ['face', 'eyes', 'mouth', 'acc', 'bg'],
+      selectTabList: ['face', 'eyes', 'mouth', 'acc', 'bg', 'preset'],
     };
   },
   methods() {},
@@ -108,6 +99,7 @@ export default {
   width: 100%;
   height: 100%;
   transform: translate(-50%, -50%);
+  z-index: 10;
 }
 .select__input:checked {
   border: 2px solid #c00;
