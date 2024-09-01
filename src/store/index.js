@@ -44,7 +44,9 @@ export default createStore({
       state.bg = bgData;
     },
     addPreset(state, presetData) {
-      const {pData, pName} = presetData
+      let pName = presetData.name;
+      let pData = presetData.data;
+
       const presetObj = { item: pData };
       localStorage.setItem(pName, JSON.stringify(presetObj));
       state.presetData.push(presetObj);

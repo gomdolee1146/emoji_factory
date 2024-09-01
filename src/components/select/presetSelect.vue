@@ -1,6 +1,6 @@
 <template>
   <ul class="select__list">
-    <li class="select__lst" v-for="(preset, idx) in this.storedPresetData" :key="idx">
+    <li class="select__lst" v-for="(preset, idx) in storedPresetData" :key="idx">
       <div class="select__box">
         <input
           type="radio"
@@ -59,10 +59,5 @@ export default {
       await this.$store.dispatch('SAVE_BG_INFO', saveData.bgInfo);
     },
   },
-  mounted() {
-    console.log('mounted', this.storedPresetData);
-  },
 };
 </script>
-
-<style></style>

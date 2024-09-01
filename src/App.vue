@@ -9,13 +9,26 @@ import pageView from '@/components/pageView.vue';
 export default {
   name: 'App',
   components: { pageView },
+  created() {
+    document.title = 'Portfolio :: emoji'
+  }
 };
 </script>
 <style>
+@font-face {
+  font-family: 'HancomMalangMalang-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2406-1@1.0/HancomMalangMalang-Regular.woff2')
+    format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: 'HancomMalangMalang-Regular';
+  font-size: 16px;
 }
 ul,
 li {
@@ -29,6 +42,9 @@ input {
   -webkit-appearance: none;
   appearance: none;
   outline: none;
+}
+button {
+  cursor: pointer;
 }
 .wrap {
   display: flex;

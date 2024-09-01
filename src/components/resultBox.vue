@@ -43,9 +43,8 @@ export default {
       this.getRandomEmoji();
     },
     saveEmoji() {
-      const presetData = {}
-      const text = `${this.getEmojiInfo.faceInfo}${this.getEmojiInfo.eyesInfo}${this.getEmojiInfo.mouthInfo}${this.getEmojiInfo.accInfo}${this.getEmojiInfo.bgInfo}`
-
+      let presetData = {}
+      let text = `${this.getEmojiInfo.faceInfo}${this.getEmojiInfo.eyesInfo}${this.getEmojiInfo.mouthInfo}${this.getEmojiInfo.accInfo}${this.getEmojiInfo.bgInfo}`
       presetData.name = text;
       presetData.data = this.getEmojiInfo
       this.$store.commit('addPreset', presetData);
@@ -66,7 +65,7 @@ export default {
   padding: 0 10px;
   border-radius: 20px;
   background: #f1f1f1;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 700;
   color: #505050;
 }
@@ -94,6 +93,8 @@ export default {
   justify-content: center;
   align-items: center;
   position: relative;
+  border: 4px solid #f1f1f1;
+  border-radius: 24px;
 }
 .result__bg {
   position: absolute;

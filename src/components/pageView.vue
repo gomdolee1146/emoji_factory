@@ -26,11 +26,11 @@ export default {
   padding: 28px 40px;
   border-radius: 40px;
   background: #fff;
+  box-shadow: 0 0 8px 8px rgba(0,0,0,0.12);
 }
 .page > div {
   flex: 0 0 50%;
   height: 100%;
-  border: 12px solid #e8e8e8;
   border-radius: 20px;
   background: #fff;
 }

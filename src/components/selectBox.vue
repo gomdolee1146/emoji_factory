@@ -3,10 +3,10 @@
     <div class="select__tab">
       <button
         class="select__tab_btn"
-        :class="idx === 0 ? 'on' : ''"
+        :class="selectBtn === tab ? 'on' : ''"
         v-for="(tab, idx) in selectTabList"
         :key="idx"
-        @click="selectBtn = tab"
+        @click="changeTabBtn(tab)"
       >
         {{ tab }}
       </button>
@@ -36,40 +36,53 @@ export default {
       selectTabList: ['face', 'eyes', 'mouth', 'acc', 'bg', 'preset'],
     };
   },
-  methods() {},
-  computed: {},
-  mounted() {},
+  methods: {
+    changeTabBtn(tab) {
+      this.selectBtn = tab;
+    },
+  },
 };
 </script>
 
 <style>
 .select__tab {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 2px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
   height: 60px;
   padding: 4px;
-  border-radius: 24px 24px 0 0;
+  border-radius: 16px;
+  background: #f0f0f0;
   box-sizing: border-box;
   overflow: hidden;
 }
 .select__tab_btn {
-  flex: 1 1 auto;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
-  background: #f4f4f4;
 }
 .select__tab_btn:hover {
   background: #e8e8e8;
 }
+.select__tab_btn.on {
+  background: #fff;
+}
+.select__tab_btn:first-child {
+  border-radius: 12px 0 0 12px;
+}
+.select__tab_btn:last-child {
+  border-radius: 0 12px 12px 0;
+}
 .select__wrap {
   width: 100%;
-  height: calc(720px - 40px);
+  height: 596px;
+  margin-top: 8px;
+  padding: 8px;
+  border: 4px solid #f0f0f0;
+  border-radius: 16px;
   overflow-y: auto;
   overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 .select__list {
@@ -84,7 +97,8 @@ export default {
 .select__lst {
   display: block;
   width: 90px;
-  background: #f1f1f1;
+  border: 1px solid #e8e8e8;
+  border-radius: 4px;
   aspect-ratio: 1/1;
 }
 .select__box {
