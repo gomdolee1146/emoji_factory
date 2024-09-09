@@ -20,6 +20,9 @@ import { commonMixin } from '@/mixin/commonMixin';
 export default {
   name: 'faceSelect',
   mixins: [commonMixin],
+  props: {
+    randomFace: { type: Number, default: null },
+  },
   data() {
     return {
       faceLength: null,
@@ -31,12 +34,20 @@ export default {
       const faceData = this.faceData;
       await this.$store.dispatch('SAVE_FACE_INFO', faceData);
     },
-    async resetFaceData(){
+    async resetFaceData() {
       await this.$store.dispatch('SAVE_FACE_INFO', '');
-    }
+    },
   },
   mounted() {
     this.faceLength = this.getImageLength('face');
+  },
+  watch: {
+    randomFace: {
+      deep: true,
+      handler() {
+        this.faceData = this.randomFace;
+      },
+    },
   },
 };
 </script>
@@ -55,7 +66,8 @@ export default {
   border-radius: 50%;
 }
 .select__circle .select__input {
-  border-radius: 50%;
+  border-radius: 50% !important;
+  cursor: pointer;
 }
 .select__circle .select__label {
   width: 100%;

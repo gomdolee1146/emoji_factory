@@ -1,6 +1,6 @@
 <template>
   <div class="result">
-    <button class="btn-random" @click="randomEmoji"><i></i>랜덤이모지</button>
+    <button class="btn-random" @click="getRandomEmoji()"><i></i>랜덤이모지</button>
     <div class="result__wrap">
       <div class="result__bg" :style="`background-color:${getEmojiInfo.bgInfo}`"></div>
       <div class="result__box">
@@ -27,6 +27,17 @@ import { commonMixin } from '@/mixin/commonMixin';
 export default {
   name: 'resultBox',
   mixins: [commonMixin],
+  data() {
+    return {
+      randomData: {
+        face: null,
+        eyes: null,
+        mouth: null,
+        acc: null,
+        bg: null,
+      },
+    };
+  },
   computed: {
     getEmojiInfo() {
       return {
@@ -39,17 +50,28 @@ export default {
     },
   },
   methods: {
-    randomEmoji() {
-      this.getRandomEmoji();
-    },
+    // randomEmoji() {
+    //   this.getRandomEmoji();
+    // },
     saveEmoji() {
-      let presetData = {}
-      let text = `${this.getEmojiInfo.faceInfo}${this.getEmojiInfo.eyesInfo}${this.getEmojiInfo.mouthInfo}${this.getEmojiInfo.accInfo}${this.getEmojiInfo.bgInfo}`
+      let presetData = {};
+      let text = `${this.getEmojiInfo.faceInfo}${this.getEmojiInfo.eyesInfo}${this.getEmojiInfo.mouthInfo}${this.getEmojiInfo.accInfo}${this.getEmojiInfo.bgInfo}`;
       presetData.name = text;
-      presetData.data = this.getEmojiInfo
+      presetData.data = this.getEmojiInfo;
       this.$store.commit('addPreset', presetData);
     },
   },
+  created() {
+    this.getRandomEmoji();
+  },
+  watch:{
+    randomData:{
+      deep: true,
+      handler() {
+        this.$emit('saveRandomData', this.randomData)
+      }
+    }
+  }
 };
 </script>
 

@@ -1,6 +1,6 @@
 <template>
   <div class="select__color">
-    <input type="color" v-model="BgData" @change="saveBGInfo" />
+    <input type="color" v-model="bgData" @change="saveBGInfo" />
   </div>
 </template>
 
@@ -9,13 +9,13 @@ export default {
   name: 'bgSelect',
   data() {
     return {
-      BgData: '',
+      bgData: '',
     };
   },
   methods: {
     async saveBGInfo() {
-      const BgData = this.BgData;
-      await this.$store.dispatch('SAVE_BG_INFO', BgData);
+      const bgData = this.bgData;
+      await this.$store.dispatch('SAVE_BG_INFO', bgData);
     },
   },
 };

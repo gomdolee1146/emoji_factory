@@ -12,9 +12,15 @@
       </button>
     </div>
     <div class="select__wrap">
-      <keep-alive>
+      <!-- <keep-alive>
         <component :is="`${selectBtn}Select`"></component>
-      </keep-alive>
+      </keep-alive> -->
+      <face-select v-show="selectBtn === 'face'" :randomFace="randomEmoji.face" />
+      <eyes-select v-show="selectBtn === 'eyes'" :randomEyes="randomEmoji.eyes" />
+      <mouth-select v-show="selectBtn === 'mouth'" :randomMouth="randomEmoji.mouth" />
+      <acc-select v-show="selectBtn === 'acc'" />
+      <bg-select v-show="selectBtn === 'bg'" />
+      <preset-select v-show="selectBtn === 'preset'" />
     </div>
   </div>
 </template>
@@ -30,15 +36,29 @@ import presetSelect from '@/components/select/presetSelect.vue';
 export default {
   name: 'selectBox',
   components: { faceSelect, eyesSelect, mouthSelect, accSelect, bgSelect, presetSelect },
+  props: {
+    randomData: { type: Object, default: () => {} },
+  },
   data() {
     return {
       selectBtn: 'face',
       selectTabList: ['face', 'eyes', 'mouth', 'acc', 'bg', 'preset'],
+      randomEmoji: {},
     };
   },
   methods: {
     changeTabBtn(tab) {
       this.selectBtn = tab;
+    },
+  },
+
+  watch: {
+    randomData: {
+      deep: true,
+      handler() {
+        this.randomEmoji = this.randomData
+        console.log('selectBox', this.randomData);
+      },
     },
   },
 };
@@ -114,9 +134,11 @@ export default {
   height: 100%;
   transform: translate(-50%, -50%);
   z-index: 10;
+  cursor: pointer;
 }
 .select__input:checked {
   border: 2px solid #c00;
+  border-radius: 4px;
   box-sizing: content-box;
 }
 .select__label {

@@ -24,6 +24,9 @@ import { commonMixin } from '@/mixin/commonMixin';
 export default {
   name: 'accSelect',
   mixins: [commonMixin],
+  props: {
+    randomAcc: { type: Array, default: () => [] },
+  },
   data() {
     return {
       accLength: null,
@@ -41,6 +44,14 @@ export default {
   },
   mounted() {
     this.accLength = this.getImageLength('acc');
+  },
+  watch: {
+    randomAcc: {
+      deep: true,
+      handler() {
+        this.accData = this.randomAcc;
+      },
+    },
   },
 };
 </script>

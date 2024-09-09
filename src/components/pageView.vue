@@ -1,7 +1,7 @@
 <template>
   <div class="page">
-    <resultBox />
-    <selectBox />
+    <resultBox @saveRandomData="saveRandomData" />
+    <selectBox :randomData="randomData" />
   </div>
 </template>
 
@@ -11,7 +11,17 @@ import selectBox from '@/components/selectBox.vue';
 
 export default {
   name: 'pageView',
+  data() {
+    return {
+      randomData: null,
+    };
+  },
   components: { resultBox, selectBox },
+  methods: {
+    saveRandomData(randomData) {
+      this.randomData = randomData;
+    },
+  },
 };
 </script>
 
@@ -26,7 +36,7 @@ export default {
   padding: 28px 40px;
   border-radius: 40px;
   background: #fff;
-  box-shadow: 0 0 8px 8px rgba(0,0,0,0.12);
+  box-shadow: 0 0 8px 8px rgba(0, 0, 0, 0.12);
 }
 .page > div {
   flex: 0 0 50%;

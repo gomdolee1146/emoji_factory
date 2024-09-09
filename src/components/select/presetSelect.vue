@@ -36,7 +36,6 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
 export default {
   name: 'presetSelect',
   data() {
@@ -46,7 +45,9 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(['storedPresetData']),
+    storedPresetData(){
+      return this.$store.getters['storedPresetData']
+    }
   },
   methods: {
     async savePresetInfo(data) {

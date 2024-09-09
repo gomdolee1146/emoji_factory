@@ -20,6 +20,9 @@ import { commonMixin } from '@/mixin/commonMixin';
 export default {
   name: 'mouthSelect',
   mixins: [commonMixin],
+  props: {
+    randomMouth: { type: Number, default: null },
+  },
   data() {
     return {
       mouthLength: null,
@@ -31,12 +34,20 @@ export default {
       const mouthData = this.mouthData;
       await this.$store.dispatch('SAVE_MOUTH_INFO', mouthData);
     },
-    async resetMouthData(){
+    async resetMouthData() {
       await this.$store.dispatch('SAVE_MOUTH_INFO', '');
-    }
+    },
   },
   mounted() {
     this.mouthLength = this.getImageLength('mouth');
+  },
+  watch: {
+    randomMouth: {
+      deep: true,
+      handler() {
+        this.mouthData = this.randomMouth;
+      },
+    },
   },
 };
 </script>

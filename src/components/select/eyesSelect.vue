@@ -20,6 +20,9 @@ import { commonMixin } from '@/mixin/commonMixin';
 export default {
   name: 'eyesSelect',
   mixins: [commonMixin],
+  props: {
+    randomEyes: { type: Number, default: null },
+  },
   data() {
     return {
       eyesLength: null,
@@ -37,6 +40,14 @@ export default {
   },
   mounted() {
     this.eyesLength = this.getImageLength('eyes');
+  },
+  watch: {
+    randomEyes: {
+      deep: true,
+      handler() {
+        this.eyesData = this.randomEyes;
+      },
+    },
   },
 };
 </script>
