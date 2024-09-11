@@ -61,9 +61,8 @@ export default {
       await this.$store.dispatch('SAVE_BG_INFO', saveData.bgInfo);
     },
   },
-  created() {
+  mounted() {
     this.presetList = this.storedPresetData;
-    console.log(this.storedPresetData);
   },
 };
 </script>

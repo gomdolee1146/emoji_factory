@@ -117,6 +117,7 @@ export default {
   position: relative;
   border: 4px solid #f1f1f1;
   border-radius: 24px;
+  overflow: hidden;
 }
 .result__bg {
   position: absolute;
