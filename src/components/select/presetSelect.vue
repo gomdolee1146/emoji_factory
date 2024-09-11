@@ -10,6 +10,7 @@
           @change="savePresetInfo(preset.item)"
         />
         <label class="select__label">
+          <div class="result__bg" :style="`background-color:${preset.item.bgInfo}`"></div>
           <div
             class="result__layer"
             :class="`select__face-${preset.item.faceInfo}`"
@@ -45,9 +46,9 @@ export default {
     };
   },
   computed: {
-    storedPresetData(){
-      return this.$store.getters['storedPresetData']
-    }
+    storedPresetData() {
+      return this.$store.getters['storedPresetData'];
+    },
   },
   methods: {
     async savePresetInfo(data) {
@@ -60,8 +61,15 @@ export default {
       await this.$store.dispatch('SAVE_BG_INFO', saveData.bgInfo);
     },
   },
-  created(){
+  created() {
     this.presetList = this.storedPresetData;
+    console.log(this.storedPresetData);
   },
 };
 </script>
+<style>
+.select__box .result__bg {
+  width: 100%;
+  height: 100%;
+}
+</style>
