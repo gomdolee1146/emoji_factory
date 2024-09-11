@@ -12,9 +12,6 @@
       </button>
     </div>
     <div class="select__wrap">
-      <!-- <keep-alive>
-        <component :is="`${selectBtn}Select`"></component>
-      </keep-alive> -->
       <face-select v-show="selectBtn === 'face'" :randomFace="randomEmoji.face" />
       <eyes-select v-show="selectBtn === 'eyes'" :randomEyes="randomEmoji.eyes" />
       <mouth-select v-show="selectBtn === 'mouth'" :randomMouth="randomEmoji.mouth" />
@@ -57,7 +54,6 @@ export default {
       deep: true,
       handler() {
         this.randomEmoji = this.randomData
-        console.log('selectBox', this.randomData);
       },
     },
   },
