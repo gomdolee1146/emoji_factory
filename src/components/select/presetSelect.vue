@@ -10,7 +10,6 @@
           @change="savePresetInfo(preset.item)"
         />
         <label class="select__label">
-          <div class="result__bg" :style="`background-color:${preset.item.bgInfo}`"></div>
           <div
             class="result__layer"
             :class="`select__face-${preset.item.faceInfo}`"
@@ -63,7 +62,6 @@ export default {
   },
   created(){
     this.presetList = this.storedPresetData;
-    console.log(this.storedPresetData);
   },
 };
 </script>
